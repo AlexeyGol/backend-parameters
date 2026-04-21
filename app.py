@@ -33,8 +33,11 @@ def hello_world():
 
 @app.route('/env')
 def get_env():
-    """Returns all environment variables."""
-    return jsonify(dict(os.environ))
+    """Returns all environment variables including config files."""
+    env_vars = dict(os.environ)
+    env_vars['application.properties.from.configmap'] = application_properties_from_configmap
+    env_vars['application.secret.properties.from.secret'] = application_secret_properties_from_secret
+    return jsonify(env_vars)
 
 
 if __name__ == '__main__':
