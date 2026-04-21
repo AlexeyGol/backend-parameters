@@ -1,0 +1,9 @@
+apiVersion: v1
+# Kubernetes ServiceAccount grants permissions to interact with resources.
+kind: ServiceAccount
+metadata:
+  annotations:
+    # Annotation that links this ServiceAccount to an AWS IAM role.
+    # This enables the Pod using this ServiceAccount to assume the specified IAM role for accessing AWS resources.
+    eks.amazonaws.com/role-arn: arn:aws:iam::183631338639:role/krci-cmtr-od3xhq57-assume-role
+  name: externalsecrets-aws

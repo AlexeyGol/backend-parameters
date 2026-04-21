@@ -56,5 +56,10 @@ A Helm chart for Kubernetes
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
 | tolerations | list | `[]` | https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ |
-| volumeMounts | list | `[]` |  |
-| volumes | list | `[]` |  |
+| volumeMounts[0].mountPath | string | `"/ps-config"` |  |
+| volumeMounts[0].name | string | `"ps-volume"` |  |
+| volumeMounts[0].readOnly | bool | `true` |  |
+| volumes[0].name | string | `"ps-volume"` |  |
+| volumes[0].secret.items[0].key | string | `"application.secret.properties.from.ps"` |  |
+| volumes[0].secret.items[0].path | string | `"application.secret.properties.from.ps"` |  |
+| volumes[0].secret.secretName | string | `"backend-parameters"` |  |

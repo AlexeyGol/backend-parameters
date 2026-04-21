@@ -47,6 +47,13 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
+
+          env:
+            - name: ENV_VAR5
+              valueFrom:
+                secretKeyRef:
+                  name: backend-parameters
+                  key: ENV_VAR5
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
